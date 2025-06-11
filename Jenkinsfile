@@ -40,7 +40,7 @@ pipeline {
                         }
 
                         sh """
-                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/tmp/.env
+                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/home/ubuntu/.env
 
                         ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
                             echo "📦 Actualizando sistema..."
