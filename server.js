@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { config } = require('./src/config/services');
 const setupRoutes = require('./src/config/routes');
-const { setupMiddleware } = require('./src/middleware');
+const { setupMiddleware, setupErrorHandling } = require('./src/middleware');
 const logger = require('./src/utils/logger');
 const ServiceRegistry = require('./src/services/ServiceRegistry');
 const HealthChecker = require('./src/services/HealthChecker');
@@ -25,9 +25,9 @@ class APIGateway {
                 port: this.port
             });
 
-            // 1. Configurar middlewares básicos
+            // 1. Configurar middlewares básicos PRIMERO
             setupMiddleware(this.app);
-            logger.info('✅ Middlewares configurados');
+            logger.info('✅ Middlewares básicos configurados');
 
             // 2. Registrar servicios de microservicios
             await this.serviceRegistry.registerServices(config.services);
@@ -40,11 +40,15 @@ class APIGateway {
             setupRoutes(this.app, this.serviceRegistry);
             logger.info('✅ Rutas configuradas');
 
-            // 4. Iniciar health checker para monitorear servicios
+            // 4. 🔧 IMPORTANTE: Configurar manejo de errores DESPUÉS de las rutas
+            setupErrorHandling(this.app);
+            logger.info('✅ Manejo de errores configurado');
+
+            // 5. Iniciar health checker para monitorear servicios
             this.healthChecker.startHealthChecks();
             logger.info('✅ Health checker iniciado');
 
-            // 5. Verificar configuración de autenticación
+            // 6. Verificar configuración de autenticación
             await this.validateAuthConfig();
             logger.info('✅ Configuración de autenticación validada');
 
@@ -162,6 +166,17 @@ class APIGateway {
             environment: process.env.NODE_ENV || 'development'
         });
 
+        // 🔧 AGREGADO: Log de servicios registrados
+        const services = this.serviceRegistry.getAllServices();
+        logger.info('🔗 Servicios registrados:', {
+            total: services.length,
+            services: services.map(s => ({
+                name: s.name,
+                url: s.url,
+                status: s.status
+            }))
+        });
+
         if (process.env.NODE_ENV !== 'production') {
             logger.info('🔧 Modo desarrollo activo - logs adicionales habilitados');
         }
@@ -178,6 +193,12 @@ class APIGateway {
             if (this.healthChecker) {
                 this.healthChecker.stopHealthChecks();
                 logger.info('✅ Health checker detenido');
+            }
+
+            // Limpiar service registry
+            if (this.serviceRegistry) {
+                this.serviceRegistry.destroy();
+                logger.info('✅ Service registry limpiado');
             }
 
             // Cerrar servidor HTTP
@@ -226,22 +247,31 @@ class APIGateway {
 
     // Método para obtener información del gateway
     getInfo() {
+        const services = this.serviceRegistry.getAllServices();
+        const memoryUsage = process.memoryUsage();
+        
         return {
             name: 'E-commerce API Gateway',
             version: process.env.API_VERSION || '1.0.0',
             environment: process.env.NODE_ENV || 'development',
             uptime: process.uptime(),
             port: this.port,
-            services: this.serviceRegistry.getAllServices().map(service => ({
+            timestamp: new Date().toISOString(),
+            services: services.map(service => ({
                 name: service.name,
                 url: service.url,
                 status: service.status,
-                lastHealthCheck: service.lastHealthCheck
+                lastHealthCheck: service.lastHealthCheck,
+                failureCount: service.failureCount,
+                circuitBreakerState: this.serviceRegistry.getCircuitBreaker(service.name)?.getState()?.state
             })),
             memory: {
-                used: `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`,
-                total: `${Math.round(process.memoryUsage().heapTotal / 1024 / 1024)}MB`
-            }
+                used: `${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB`,
+                total: `${Math.round(memoryUsage.heapTotal / 1024 / 1024)}MB`,
+                external: `${Math.round(memoryUsage.external / 1024 / 1024)}MB`,
+                rss: `${Math.round(memoryUsage.rss / 1024 / 1024)}MB`
+            },
+            statistics: this.serviceRegistry.getServicesStatistics()
         };
     }
 }

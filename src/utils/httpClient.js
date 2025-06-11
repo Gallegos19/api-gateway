@@ -104,6 +104,15 @@ class HttpClient {
         });
     }
 
+    async patch(serviceName, path, data, options = {}) {
+        return this.request(serviceName, {
+            method: 'PATCH',
+            url: path,
+            data,
+            ...options
+        });
+    }
+
     async delete(serviceName, path, options = {}) {
         return this.request(serviceName, {
             method: 'DELETE',
