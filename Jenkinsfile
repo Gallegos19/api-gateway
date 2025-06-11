@@ -40,7 +40,7 @@ pipeline {
                         }
 
                         sh """
-                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/home/ubuntu/.env
+                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/tmp/.env
 
                         ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
                             echo "📦 Actualizando sistema..."
@@ -71,7 +71,7 @@ pipeline {
                             git pull origin ${env.ACTUAL_BRANCH} &&
                             npm ci &&
                             pm2 restart ${pm2_name} || pm2 start server.js --name ${pm2_name}
-                        '
+                            '
                         """
                     }
                 }
