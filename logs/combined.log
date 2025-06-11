@@ -17557,3 +17557,121 @@
 {"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:30:22"}
 {"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 163","timestamp":"2025-06-11 00:30:51"}
 {"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:30:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 164","timestamp":"2025-06-11 00:31:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:31:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 165","timestamp":"2025-06-11 00:31:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:31:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 166","timestamp":"2025-06-11 00:32:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:32:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 167","timestamp":"2025-06-11 00:32:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:32:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 168","timestamp":"2025-06-11 00:33:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:33:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 169","timestamp":"2025-06-11 00:33:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:33:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 170","timestamp":"2025-06-11 00:34:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:34:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 171","timestamp":"2025-06-11 00:34:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:34:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 172","timestamp":"2025-06-11 00:35:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:35:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 173","timestamp":"2025-06-11 00:35:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:35:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 174","timestamp":"2025-06-11 00:36:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:36:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 175","timestamp":"2025-06-11 00:36:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:36:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 176","timestamp":"2025-06-11 00:37:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:37:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 177","timestamp":"2025-06-11 00:37:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:37:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 178","timestamp":"2025-06-11 00:38:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:38:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 179","timestamp":"2025-06-11 00:38:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:38:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 180","timestamp":"2025-06-11 00:39:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:39:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 181","timestamp":"2025-06-11 00:39:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:39:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 182","timestamp":"2025-06-11 00:40:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:40:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 183","timestamp":"2025-06-11 00:40:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:40:53"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 184","timestamp":"2025-06-11 00:41:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:41:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 185","timestamp":"2025-06-11 00:41:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:41:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 186","timestamp":"2025-06-11 00:42:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:42:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 187","timestamp":"2025-06-11 00:42:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:42:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 188","timestamp":"2025-06-11 00:43:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:43:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 189","timestamp":"2025-06-11 00:43:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:43:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 190","timestamp":"2025-06-11 00:44:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:44:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 191","timestamp":"2025-06-11 00:44:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:44:53"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 192","timestamp":"2025-06-11 00:45:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:45:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 193","timestamp":"2025-06-11 00:45:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:45:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 194","timestamp":"2025-06-11 00:46:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:46:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 195","timestamp":"2025-06-11 00:46:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:46:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 196","timestamp":"2025-06-11 00:47:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:47:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 197","timestamp":"2025-06-11 00:47:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:47:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 198","timestamp":"2025-06-11 00:48:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:48:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 199","timestamp":"2025-06-11 00:48:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:48:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 200","timestamp":"2025-06-11 00:49:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:49:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 201","timestamp":"2025-06-11 00:49:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:49:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 202","timestamp":"2025-06-11 00:50:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:50:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 203","timestamp":"2025-06-11 00:50:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:50:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 204","timestamp":"2025-06-11 00:51:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:51:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 205","timestamp":"2025-06-11 00:51:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:51:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 206","timestamp":"2025-06-11 00:52:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:52:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 207","timestamp":"2025-06-11 00:52:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:52:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 208","timestamp":"2025-06-11 00:53:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:53:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 209","timestamp":"2025-06-11 00:53:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:53:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 210","timestamp":"2025-06-11 00:54:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:54:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 211","timestamp":"2025-06-11 00:54:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:54:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 212","timestamp":"2025-06-11 00:55:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:55:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 213","timestamp":"2025-06-11 00:55:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:55:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 214","timestamp":"2025-06-11 00:56:22"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:56:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 215","timestamp":"2025-06-11 00:56:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:56:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 216","timestamp":"2025-06-11 00:57:22"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:57:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 217","timestamp":"2025-06-11 00:57:52"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:57:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 218","timestamp":"2025-06-11 00:58:22"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:58:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 219","timestamp":"2025-06-11 00:58:52"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:58:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 220","timestamp":"2025-06-11 00:59:22"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:59:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 221","timestamp":"2025-06-11 00:59:52"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:59:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 222","timestamp":"2025-06-11 01:00:22"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 01:00:22"}
