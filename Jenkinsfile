@@ -40,7 +40,7 @@ pipeline {
                         }
 
                         sh """
-                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/tmp/.env
+                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/home/ubuntu/.env.temp
 
                         ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
                             echo "📦 Actualizando sistema..."
@@ -64,15 +64,16 @@ pipeline {
                             fi
 
                             echo "📋 Copiando .env..."
-                            cp /tmp/.env $REMOTE_PATH/.env
+                            cp /home/ubuntu/.env.temp $REMOTE_PATH/.env && rm /home/ubuntu/.env.temp
 
                             echo "🔁 Pull y deploy..."
                             cd $REMOTE_PATH &&
                             git pull origin ${env.ACTUAL_BRANCH} &&
                             npm ci &&
                             pm2 restart ${pm2_name} || pm2 start server.js --name ${pm2_name}
-                            '
+                        '
                         """
+
                     }
                 }
             }
