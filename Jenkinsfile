@@ -39,41 +39,39 @@ pipeline {
                             error "Branch ${env.ACTUAL_BRANCH} no está configurada para despliegue."
                         }
 
+                        // Primero checamos si pm2 está corriendo el proceso para detenerlo
                         sh """
-                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/home/ubuntu/.env.temp
-
                         ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
-                            echo "📦 Actualizando sistema..."
-                            sudo apt-get update -y &&
-                            sudo apt-get upgrade -y
-
-                            echo "📥 Verificando Node.js..."
-                            if ! command -v node > /dev/null; then
-                                curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&
-                                sudo apt-get install -y nodejs
+                            if pm2 list | grep -q ${pm2_name}; then
+                                echo "🛑 Deteniendo proceso pm2 ${pm2_name}..."
+                                pm2 stop ${pm2_name}
+                            else
+                                echo "ℹ️ Proceso pm2 ${pm2_name} no estaba corriendo."
                             fi
-
-                            echo "📥 Verificando PM2..."
-                            if ! command -v pm2 > /dev/null; then
-                                sudo npm install -g pm2
-                            fi
-
-                            echo "📁 Verificando carpeta de app..."
-                            if [ ! -d "$REMOTE_PATH/.git" ]; then
-                                git clone https://github.com/Gallegos19/api-gateway.git $REMOTE_PATH
-                            fi
-
-                            echo "📋 Copiando .env..."
-                            cp /home/ubuntu/.env.temp $REMOTE_PATH/.env && rm /home/ubuntu/.env.temp
-
-                            echo "🔁 Pull y deploy..."
-                            cd $REMOTE_PATH &&
-                            git pull origin ${env.ACTUAL_BRANCH} &&
-                            npm ci &&
-                            pm2 restart ${pm2_name} || pm2 start server.js --name ${pm2_name}
                         '
                         """
 
+                        // Luego subimos y reemplazamos .env
+                        sh """
+                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/home/ubuntu/.env.temp
+                        ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
+                            echo "📋 Actualizando .env..."
+                            cp /home/ubuntu/.env.temp $REMOTE_PATH/.env && rm /home/ubuntu/.env.temp
+                        '
+                        """
+
+                        // Finalmente hacemos pull, npm install y reiniciamos/iniciamos pm2
+                        sh """
+                        ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
+                            echo "🔁 Actualizando repositorio y dependencias..."
+                            cd $REMOTE_PATH &&
+                            git pull origin ${env.ACTUAL_BRANCH} &&
+                            npm ci
+
+                            echo "🚀 Reiniciando proceso pm2 ${pm2_name}..."
+                            pm2 restart ${pm2_name} || pm2 start server.js --name ${pm2_name}
+                        '
+                        """
                     }
                 }
             }
