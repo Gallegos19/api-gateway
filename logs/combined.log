@@ -10018,3 +10018,43 @@
 {"level":"warn","message":"Servicio no saludable detectado: cart-service","timestamp":"2025-06-01 14:27:47"}
 {"level":"warn","message":"Servicio no saludable detectado: payment-service","timestamp":"2025-06-01 14:27:47"}
 {"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-01 14:27:47"}
+{"environment":"development","level":"info","message":"🚀 Inicializando API Gateway...","port":"3000","timestamp":"2025-06-10 18:47:58","version":"1.0.0"}
+{"level":"info","message":"✅ Middlewares configurados","timestamp":"2025-06-10 18:47:58"}
+{"failureThreshold":5,"level":"info","message":"Circuit Breaker 'CircuitBreaker' inicializado","monitoringPeriod":10000,"recoveryTimeout":30000,"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Servicio registrado: user - http://localhost:3001","timestamp":"2025-06-10 18:47:58"}
+{"failureThreshold":5,"level":"info","message":"Circuit Breaker 'CircuitBreaker' inicializado","monitoringPeriod":10000,"recoveryTimeout":30000,"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Servicio registrado: product - http://localhost:3002","timestamp":"2025-06-10 18:47:58"}
+{"failureThreshold":5,"level":"info","message":"Circuit Breaker 'CircuitBreaker' inicializado","monitoringPeriod":10000,"recoveryTimeout":30000,"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Servicio registrado: cart - http://localhost:3003","timestamp":"2025-06-10 18:47:58"}
+{"failureThreshold":5,"level":"info","message":"Circuit Breaker 'CircuitBreaker' inicializado","monitoringPeriod":10000,"recoveryTimeout":30000,"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Servicio registrado: order - http://localhost:3004","timestamp":"2025-06-10 18:47:58"}
+{"failureThreshold":5,"level":"info","message":"Circuit Breaker 'CircuitBreaker' inicializado","monitoringPeriod":10000,"recoveryTimeout":30000,"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Servicio registrado: payment - http://localhost:3005","timestamp":"2025-06-10 18:47:58"}
+{"failureThreshold":5,"level":"info","message":"Circuit Breaker 'CircuitBreaker' inicializado","monitoringPeriod":10000,"recoveryTimeout":30000,"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Servicio registrado: email - http://localhost:3006","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"🔍 Verificando salud inicial de servicios...","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"6 servicios registrados exitosamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Servicios registrados","serviceCount":6,"services":["user","product","cart","order","payment","email"],"timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ User routes configuradas completamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Product routes configuradas completamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Cart routes configuradas completamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Order routes configuradas completamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Payment routes configuradas completamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Email routes configuradas completamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Rutas configuradas","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"Iniciando health checks cada 30000ms","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Health checker iniciado","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"✅ Configuración de autenticación validada","timestamp":"2025-06-10 18:47:58"}
+{"level":"info","message":"🎉 API Gateway inicializado correctamente","timestamp":"2025-06-10 18:47:58"}
+{"level":"warn","message":"Servicio no saludable: order-service - Error: fetch failed - Fallos consecutivos: 2","timestamp":"2025-06-10 18:47:58"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 2","timestamp":"2025-06-10 18:47:58"}
+{"level":"warn","message":"Servicio no saludable detectado: order-service","timestamp":"2025-06-10 18:47:59"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-10 18:47:59"}
+{"healthy":4,"healthyServices":["user","product","cart","payment"],"level":"info","message":"📊 Estado inicial de servicios:","timestamp":"2025-06-10 18:47:59","total":6,"unhealthy":2,"unhealthyServices":["order","email"]}
+{"level":"warn","message":"⚠️ Algunos servicios no están disponibles:","services":[{"error":"fetch failed","name":"order"},{"error":"fetch failed","name":"email"}],"timestamp":"2025-06-10 18:47:59"}
+{"environment":"development","level":"info","message":"🎉 API Gateway ejecutándose exitosamente!","port":"3000","timestamp":"2025-06-10 18:47:59","uptime":1.7735706,"version":"1.0.0"}
+{"authVerify":"http://localhost:3000/api/auth/verify","gatewayInfo":"http://localhost:3000/api/gateway/info","health":"http://localhost:3000/health","healthServices":"http://localhost:3000/health/services","level":"info","message":"📋 URLs disponibles:","routes":"http://localhost:3000/api/gateway/routes","timestamp":"2025-06-10 18:47:59"}
+{"forgotPassword":"POST /api/auth/forgot-password","level":"info","login":"POST /api/auth/login","message":"🔐 Rutas de autenticación configuradas:","register":"POST /api/auth/register","resetPassword":"POST /api/auth/reset-password","timestamp":"2025-06-10 18:47:59"}
+{"environment":"development","jwtConfigured":true,"level":"info","message":"🛡️ Configuración de seguridad:","protectedRoutes":5,"publicRoutes":9,"timestamp":"2025-06-10 18:47:59"}
+{"level":"info","message":"🔧 Modo desarrollo activo - logs adicionales habilitados","timestamp":"2025-06-10 18:47:59"}
+{"level":"info","message":"🛑 Señal SIGINT recibida - iniciando cierre graceful","signal":"SIGINT","timestamp":"2025-06-10 18:48:13","uptime":15.9440215}

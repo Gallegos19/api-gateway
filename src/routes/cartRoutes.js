@@ -1,5 +1,5 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const { authenticateToken } = require('../middleware/auth');
+const { protectedRoute, adminRoute } = require('../middleware/auth');
 const { createServiceRateLimit } = require('../middleware/rateLimiting');
 const logger = require('../utils/logger');
 
@@ -14,21 +14,37 @@ const setupCartRoutes = (app, serviceRegistry) => {
             timeout: 30000,
             
             onProxyReq: (proxyReq, req, res) => {
-                if (req.user) {
-                    proxyReq.setHeader('x-user-id', req.user.id);
-                    proxyReq.setHeader('x-user-email', req.user.email);
-                }
-                proxyReq.setHeader('x-request-id', req.requestId);
+                logger.debug(`Proxy request to cart-service: ${req.method} ${req.url}`, {
+                    target: proxyReq.getHeader('host'),
+                    userId: req.headers['x-user-id'],
+                    requestId: req.headers['x-request-id']
+                });
+            },
+            
+            onProxyRes: (proxyRes, req, res) => {
+                logger.debug(`Proxy response from cart-service: ${proxyRes.statusCode}`, {
+                    method: req.method,
+                    url: req.url,
+                    userId: req.headers['x-user-id']
+                });
             },
             
             onError: (err, req, res) => {
-                logger.error(`Error en cart-service: ${err.message}`);
+                logger.error(`Error en cart-service proxy: ${err.message}`, {
+                    method: req.method,
+                    url: req.url,
+                    userId: req.headers['x-user-id'],
+                    error: err.message
+                });
+                
                 serviceRegistry.markServiceUnhealthy(serviceName, err);
                 
                 if (!res.headersSent) {
                     res.status(503).json({
+                        success: false,
                         error: 'Servicio de carrito no disponible',
-                        code: 'CART_SERVICE_UNAVAILABLE'
+                        code: 'CART_SERVICE_UNAVAILABLE',
+                        timestamp: new Date().toISOString()
                     });
                 }
             }
@@ -37,36 +53,49 @@ const setupCartRoutes = (app, serviceRegistry) => {
 
     // 🔒 Todas las rutas de carrito requieren autenticación
     app.get('/api/cart', 
-        authenticateToken,
+        ...protectedRoute,
         createServiceRateLimit('cart'),
-        createCartProxy({ '^/api/cart': '/cart' })
+        createCartProxy({ '^/api/cart': '/api/cart' })
     );
 
     app.post('/api/cart/items', 
-        authenticateToken,
+        ...protectedRoute,
         createServiceRateLimit('cart'),
-        createCartProxy({ '^/api/cart': '/cart' })
+        createCartProxy({ '^/api/cart': '/api/cart' })
     );
 
     app.put('/api/cart/items/:itemId', 
-        authenticateToken,
+        ...protectedRoute,
         createServiceRateLimit('cart'),
-        createCartProxy({ '^/api/cart': '/cart' })
+        createCartProxy({ '^/api/cart': '/api/cart' })
     );
 
     app.delete('/api/cart/items/:itemId', 
-        authenticateToken,
+        ...protectedRoute,
         createServiceRateLimit('cart'),
-        createCartProxy({ '^/api/cart': '/cart' })
+        createCartProxy({ '^/api/cart': '/api/cart' })
     );
 
     app.delete('/api/cart', 
-        authenticateToken,
+        ...protectedRoute,
         createServiceRateLimit('cart'),
-        createCartProxy({ '^/api/cart': '/cart' })
+        createCartProxy({ '^/api/cart': '/api/cart' })
     );
 
-    logger.info('✅ Cart routes configuradas (básicas)');
+    // 🔒 Rutas de administración de carritos
+    app.get('/api/admin/carts',
+        ...adminRoute,
+        createServiceRateLimit('cart'),
+        createCartProxy({ '^/api/admin/carts': '/api/admin/carts' })
+    );
+
+    app.get('/api/admin/carts/abandoned',
+        ...adminRoute,
+        createServiceRateLimit('cart'),
+        createCartProxy({ '^/api/admin/carts': '/api/admin/carts' })
+    );
+
+    logger.info('✅ Cart routes configuradas completamente');
 };
 
 module.exports = setupCartRoutes;

@@ -1,5 +1,10 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const { authenticateToken, authorizeRoles } = require('../middleware/auth');
+const { 
+    publicRoute, 
+    adminRoute, 
+    optionalAuth,
+    addUserHeaders 
+} = require('../middleware/auth');
 const { createServiceRateLimit } = require('../middleware/rateLimiting');
 const logger = require('../utils/logger');
 
@@ -14,61 +19,112 @@ const setupProductRoutes = (app, serviceRegistry) => {
             timeout: 30000,
             
             onProxyReq: (proxyReq, req, res) => {
-                if (req.user) {
-                    proxyReq.setHeader('x-user-id', req.user.id);
-                    proxyReq.setHeader('x-user-role', req.user.role);
-                }
-                proxyReq.setHeader('x-request-id', req.requestId);
+                logger.debug(`Proxy request to product-service: ${req.method} ${req.url}`, {
+                    target: proxyReq.getHeader('host'),
+                    userId: req.headers['x-user-id'],
+                    requestId: req.headers['x-request-id']
+                });
+            },
+            
+            onProxyRes: (proxyRes, req, res) => {
+                logger.debug(`Proxy response from product-service: ${proxyRes.statusCode}`, {
+                    method: req.method,
+                    url: req.url,
+                    userId: req.headers['x-user-id']
+                });
             },
             
             onError: (err, req, res) => {
-                logger.error(`Error en product-service: ${err.message}`);
+                logger.error(`Error en product-service proxy: ${err.message}`, {
+                    method: req.method,
+                    url: req.url,
+                    error: err.message
+                });
+                
                 serviceRegistry.markServiceUnhealthy(serviceName, err);
                 
                 if (!res.headersSent) {
                     res.status(503).json({
+                        success: false,
                         error: 'Servicio de productos no disponible',
-                        code: 'PRODUCT_SERVICE_UNAVAILABLE'
+                        code: 'PRODUCT_SERVICE_UNAVAILABLE',
+                        timestamp: new Date().toISOString()
                     });
                 }
             }
         });
     };
 
-    // 🔓 Rutas públicas básicas
+    // 🔓 Rutas públicas de productos (con autenticación opcional para logs)
     app.get('/api/products', 
+        optionalAuth,
+        addUserHeaders,
         createServiceRateLimit('products'),
-        createProductProxy({ '^/api/products': '/products' })
+        createProductProxy({ '^/api/products': '/api/products' })
     );
 
     app.get('/api/products/:id', 
+        optionalAuth,
+        addUserHeaders,
         createServiceRateLimit('products'),
-        createProductProxy({ '^/api/products': '/products' })
+        createProductProxy({ '^/api/products': '/api/products' })
     );
 
-    // 🔒 Rutas de administración básicas
-    app.post('/api/products', 
-        authenticateToken,
-        authorizeRoles('admin'),
+    // Búsqueda de productos (público)
+    app.get('/api/products/search/:term',
+        optionalAuth,
+        addUserHeaders,
         createServiceRateLimit('products'),
-        createProductProxy({ '^/api/products': '/products' })
+        createProductProxy({ '^/api/products': '/api/products' })
+    );
+
+    // Productos por categoría (público)
+    app.get('/api/products/category/:category',
+        optionalAuth,
+        addUserHeaders,
+        createServiceRateLimit('products'),
+        createProductProxy({ '^/api/products': '/api/products' })
+    );
+
+    // 🔒 Rutas de administración de productos
+    app.post('/api/products', 
+        ...adminRoute,
+        createServiceRateLimit('products'),
+        createProductProxy({ '^/api/products': '/api/products' })
     );
 
     app.put('/api/products/:id', 
-        authenticateToken,
-        authorizeRoles('admin'),
+        ...adminRoute,
         createServiceRateLimit('products'),
-        createProductProxy({ '^/api/products': '/products' })
+        createProductProxy({ '^/api/products': '/api/products' })
     );
 
     app.delete('/api/products/:id', 
-        authenticateToken,
-        authorizeRoles('admin'),
+        ...adminRoute,
         createServiceRateLimit('products'),
-        createProductProxy({ '^/api/products': '/products' })
+        createProductProxy({ '^/api/products': '/api/products' })
     );
 
-    logger.info('✅ Product routes configuradas (básicas)');
+    // Rutas específicas de administración
+    app.get('/api/admin/products',
+        ...adminRoute,
+        createServiceRateLimit('products'),
+        createProductProxy({ '^/api/admin/products': '/api/admin/products' })
+    );
+
+    app.get('/api/admin/products/stats',
+        ...adminRoute,
+        createServiceRateLimit('products'),
+        createProductProxy({ '^/api/admin/products': '/api/admin/products' })
+    );
+
+    app.put('/api/admin/products/:id/stock',
+        ...adminRoute,
+        createServiceRateLimit('products'),
+        createProductProxy({ '^/api/admin/products': '/api/admin/products' })
+    );
+
+    logger.info('✅ Product routes configuradas completamente');
 };
 
 module.exports = setupProductRoutes;
