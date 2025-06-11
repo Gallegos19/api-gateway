@@ -40,9 +40,14 @@ pipeline {
                         }
 
                         sh """
-                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:/home/ubuntu/.env.temp
+                        # Copiar .env.temp directo a la carpeta de la app para evitar problemas de permisos
+                        scp -i $SSH_KEY -o StrictHostKeyChecking=no $ENV_FILE $EC2_USER@$ip:$REMOTE_PATH/.env.temp
 
                         ssh -i $SSH_KEY -o StrictHostKeyChecking=no $EC2_USER@$ip '
+                            echo "🔧 Ajustando permisos en carpeta de la app..."
+                            sudo chown -R ubuntu:ubuntu $REMOTE_PATH
+                            sudo chmod -R u+rwX $REMOTE_PATH
+
                             echo "📦 Actualizando sistema..."
                             sudo apt-get update -y &&
                             sudo apt-get upgrade -y
@@ -63,17 +68,28 @@ pipeline {
                                 git clone https://github.com/Gallegos19/api-gateway.git $REMOTE_PATH
                             fi
 
-                            echo "📋 Copiando .env..."
-                            cp /home/ubuntu/.env.temp $REMOTE_PATH/.env && rm /home/ubuntu/.env.temp
+                            echo "📋 Actualizando .env..."
+                            cp $REMOTE_PATH/.env.temp $REMOTE_PATH/.env && rm $REMOTE_PATH/.env.temp
 
                             echo "🔁 Pull y deploy..."
                             cd $REMOTE_PATH &&
                             git pull origin ${env.ACTUAL_BRANCH} &&
-                            npm ci &&
-                            pm2 restart ${pm2_name} || pm2 start server.js --name ${pm2_name}
+                            npm ci
+
+                            echo "🛑 Verificando si pm2 tiene proceso activo..."
+                            if pm2 list | grep -q ${pm2_name}; then
+                                echo "🛑 Deteniendo proceso pm2 ${pm2_name}..."
+                                pm2 stop ${pm2_name}
+                            else
+                                echo "ℹ️ Proceso pm2 ${pm2_name} no estaba corriendo."
+                            fi
+
+                            echo "▶️ Iniciando pm2 ${pm2_name}..."
+                            pm2 start server.js --name ${pm2_name}
+
+                            echo "✅ Deploy completado."
                         '
                         """
-
                     }
                 }
             }
