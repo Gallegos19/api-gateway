@@ -19,7 +19,7 @@ pipeline {
         stage('Detect Branch') {
             steps {
                 script {
-                    env.ACTUAL_BRANCH = env.BRANCH_NAME ?: 'main'
+                    env.ACTUAL_BRANCH = env.BRANCH_NAME ?: 'master'
                     echo "🔍 Rama activa: ${env.ACTUAL_BRANCH}"
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
                     script {
                         def ip = env.ACTUAL_BRANCH == 'dev' ? DEV_IP :
                                  env.ACTUAL_BRANCH == 'qa'  ? QA_IP :
-                                 env.ACTUAL_BRANCH == 'main' ? PROD_IP : null
+                                 env.ACTUAL_BRANCH == 'master' ? PROD_IP : null
 
                         def pm2_name = "${env.ACTUAL_BRANCH}-health"
 
