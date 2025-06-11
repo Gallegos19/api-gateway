@@ -17551,3 +17551,9 @@
 {"contentLength":"746","level":"info","message":"Request completado","method":"GET","requestId":"7cef98f2-db4e-4b0c-a5f9-e3ebc83e8776","responseTime":"13ms","statusCode":200,"timestamp":"2025-06-11 00:29:21","url":"/api/orders/ORD-184084-UJ3"}
 {"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 160","timestamp":"2025-06-11 00:29:21"}
 {"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:29:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 161","timestamp":"2025-06-11 00:29:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:29:52"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 162","timestamp":"2025-06-11 00:30:21"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:30:22"}
+{"level":"warn","message":"Servicio no saludable: email-service - Error: fetch failed - Fallos consecutivos: 163","timestamp":"2025-06-11 00:30:51"}
+{"level":"warn","message":"Servicio no saludable detectado: email-service","timestamp":"2025-06-11 00:30:52"}
